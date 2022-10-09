@@ -23,3 +23,12 @@ export const getOrder = async (req: Request, res: Response, next: NextFunction) 
     next(error)
   }
 }
+
+export const getTopFive = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const topFive = await oP.getTopFive()
+    res.json({ status: 'success', data: { ...topFive } })
+  } catch (error) {
+    next(error)
+  }
+}

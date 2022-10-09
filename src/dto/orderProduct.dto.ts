@@ -4,3 +4,8 @@ export class OrderProductDto {
   product_id!: number
   quantity!: number
 }
+
+export class TopFiveDto {
+  product_id!: number
+  sum!: number
+}

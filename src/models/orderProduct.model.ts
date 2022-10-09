@@ -1,5 +1,5 @@
 import db from '../database'
-import { OrderProductDto } from '../dto/orderProduct.dto'
+import { OrderProductDto, TopFiveDto } from '../dto/orderProduct.dto'
 
 class OrderProductModel {
   async createOrderProduct(
@@ -39,6 +39,23 @@ class OrderProductModel {
       }
     } catch (error) {
       throw new Error(`cannot find Order: ${order_Id} : ${(error as Error).message}`)
+    }
+  }
+  async getTopFive(): Promise<TopFiveDto[]> {
+    try {
+      const connection = await db.connect()
+      const sql =
+        ' SELECT product_id, SUM(quantity) FROM orders_products GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 4;'
+      const result = await connection.query(sql)
+      connection.release()
+      console.log(result.rows)
+      if (result.rows.length) {
+        return result.rows
+      } else {
+        throw new Error('Could not find orderProducts')
+      }
+    } catch (error) {
+      throw new Error(`cannot find Orders : ${(error as Error).message}`)
     }
   }
 }
