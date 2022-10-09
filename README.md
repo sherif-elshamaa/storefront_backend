@@ -2,13 +2,15 @@
 
 1 - To get started, clone this repo and run `npm install` in your terminal at the project root.
 
-2 - Start the dev {npm run dev}
+2 - npm run migration:run
 
-3 - Build {npm run build}
+3 - Start the dev {npm run dev}
 
-4 - Linting {npm run lint}
+- Build {npm run build}
 
-5 - Testing {npm run test}
+- Linting {npm run lint}
+
+- Testing {npm run test}
 
 ## how to setup and connect to the database
 
