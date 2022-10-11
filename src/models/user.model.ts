@@ -34,7 +34,6 @@ class UserModel {
       const sql = 'SELECT user_id, first_name, last_name, email FROM users WHERE user_id=($1)'
       const result = await connection.query(sql, [userId])
       connection.release()
-      console.log(result.rows[0])
       return result.rows[0]
     } catch (error) {
       throw new Error(`cannot find user: ${userId} : ${(error as Error).message}`)

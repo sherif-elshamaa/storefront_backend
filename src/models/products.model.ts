@@ -28,7 +28,6 @@ class ProductModel {
         'SELECT Product_id, name, price, quantity, category FROM product WHERE product_id=($1)'
       const result = await connection.query(sql, [product_Id])
       connection.release()
-      console.log(result.rows[0])
       if (result.rows.length) {
         return result.rows[0]
       } else {

@@ -12,7 +12,7 @@
     "lint:fix": "eslint --fix",
     "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",
     "build": "npx tsc",
-    "test": "npm run build && npm run jasmine",
+    "test": "set NODE_ENV=test && db-migrate up --env test && npm run build && npm run jasmine",
     "start:prod": "npm run build && node build/index.js"
   },
   "author": "Sherif Elshamaa",

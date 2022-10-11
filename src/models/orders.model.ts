@@ -26,7 +26,6 @@ class OrderModel {
       const sql = 'SELECT order_id, status, order_date, user_id FROM orders WHERE order_id=($1)'
       const result = await connection.query(sql, [order_Id])
       connection.release()
-      console.log(result.rows[0])
       return result.rows[0]
     } catch (error) {
       throw new Error(`cannot find Order: ${order_Id} : ${(error as Error).message}`)

@@ -27,7 +27,7 @@ export const getUser = async (req: Request, res: Response, next: NextFunction) =
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const allUsers = await user.getmany()
-    res.json({ status: 'success', data: { ...allUsers } })
+    res.json({ status: 'success', data: [...allUsers] })
   } catch (error) {
     next(error)
   }

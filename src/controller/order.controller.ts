@@ -25,7 +25,7 @@ export const getOrder = async (req: Request, res: Response, next: NextFunction) 
 export const getAllOrders = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const allOrders = await order.getmany()
-    res.json({ status: 'success', data: { ...allOrders } })
+    res.json({ status: 'success', data: [...allOrders] })
   } catch (error) {
     next(error)
   }

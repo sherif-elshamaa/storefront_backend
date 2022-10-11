@@ -8,7 +8,6 @@ class OrderProductModel {
   ): Promise<OrderProductDto[]> {
     try {
       const connection = await db.connect()
-      console.log(orders)
       const sql = `INSERT INTO orders_products (order_id, product_id, quantity) 
                     values ($1, $2, $3) 
                     RETURNING id, order_id, product_id, quantity`
@@ -31,7 +30,6 @@ class OrderProductModel {
       const sql = 'SELECT order_id, status, order_date, user_id FROM orders WHERE order_id=($1)'
       const result = await connection.query(sql, [order_Id])
       connection.release()
-      console.log(result.rows)
       if (result.rows.length) {
         return result.rows
       } else {
@@ -48,7 +46,6 @@ class OrderProductModel {
         ' SELECT product_id, SUM(quantity) FROM orders_products GROUP BY product_id ORDER BY SUM(quantity) DESC LIMIT 4;'
       const result = await connection.query(sql)
       connection.release()
-      console.log(result.rows)
       if (result.rows.length) {
         return result.rows
       } else {
